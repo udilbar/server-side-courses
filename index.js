@@ -27,4 +27,8 @@ app.get('/courses', (_, res) => {
   res.render('courses.html')
 })
 
+app.get('/blogs', (_, res) => {
+  res.render('blogs.html')
+})
+
 app.listen(CONFIG.PORT, () => console.log(CONFIG.PORT))
