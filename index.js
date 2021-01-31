@@ -19,4 +19,8 @@ app.get('/about', (_, res) => {
   res.render('about.html')
 })
 
+app.get('/services', (_, res) => {
+  res.render('services.html')
+})
+
 app.listen(CONFIG.PORT, () => console.log(CONFIG.PORT))
