@@ -2,6 +2,7 @@ const express = require('express')
 const ejs = require('ejs')
 
 const CONFIG = require('./src/config')
+const users = require('./src/models/users')
 
 const app = express()
 
@@ -29,6 +30,10 @@ app.get('/courses', (_, res) => {
 
 app.get('/blogs', (_, res) => {
   res.render('blogs.html')
+})
+
+app.get('/login', (_, res) => {
+  res.render('login.html')
 })
 
 app.listen(CONFIG.PORT, () => console.log(CONFIG.PORT))
