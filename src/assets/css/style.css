@@ -1,5 +1,5 @@
-/*------------------------------------------------------------------ 
-    IMPORT FONTS 
+/*------------------------------------------------------------------
+    IMPORT FONTS
 -------------------------------------------------------------------*/
 
 @import url('https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i');
@@ -7,8 +7,8 @@
 @import url('https://fonts.googleapis.com/css?family=Great+Vibes');
 @import url('https://fonts.googleapis.com/css?family=Raleway:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i');
 
-/*------------------------------------------------------------------ 
-    IMPORT FILES 
+/*------------------------------------------------------------------
+    IMPORT FILES
 -------------------------------------------------------------------*/
 
 @import url(animate.css);
@@ -18,7 +18,7 @@
 @import url(timeline.css);
 @import url(flaticon.css);
 
-/*------------------------------------------------------------------ 
+/*------------------------------------------------------------------
     SKELETON
 -------------------------------------------------------------------*/
 
@@ -168,8 +168,8 @@ button:focus {
 }
 
 
-/*------------------------------------------------------------------ 
-   LOADER 
+/*------------------------------------------------------------------
+   LOADER
 -------------------------------------------------------------------*/
 
 #preloader {
@@ -2244,4 +2244,169 @@ section.inner_banner h3 {
 .contact_form button:focus {
 	background: #fff;
 	color: #12385b;
+}
+
+/* Modal styles */
+.popup-bg{
+	background: url(../images/slider-item-3.jpg) no-repeat center;
+	position: absolute;
+	display: block;
+	width: 100%;
+	width: 100vw;
+	height: 100%;
+	height: 100vh;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	overflow: hidden;
+	z-index: 1;
+	opacity: 0.125;
+	-webkit-background-size: cover !important;
+	-moz-background-size: cover !important;
+	-o-background-size: cover !important;
+	background-size: cover !important;
+}
+.header-title{
+	padding: 20px 0px;
+	position: relative;
+	z-index: 1;
+}
+.header-title h1{
+	text-align: center;
+	margin: 0px;
+}
+.popup-login-signup{
+	text-align: center;
+	position: relative;
+	z-index: 1;
+}
+.modal-backdrop.show{
+	z-index: 0;
+}
+.tab-bar-top .nav-tabs .nav-link{
+	line-height: 70px;
+	display: block;
+	line-height: 32px;
+	color: #ffffff;
+	background: #f2709c;
+	background: -webkit-linear-gradient(to right, #ff9472, #f2709c);
+	background: linear-gradient(to right, #ff9472, #f2709c);
+	text-transform: uppercase;
+}
+.tab-bar-top .nav-tabs .nav-link.active{
+	background: #ffffff;
+	color: #505260;
+	border-color: #ffffff;
+}
+.btn-tip{
+	background: #f2709c;
+	background: -webkit-linear-gradient(to right, #ff9472, #f2709c);
+	background: linear-gradient(to right, #ff9472, #f2709c);
+	padding: 15px 35px;
+	border: none;
+	border-radius: 8px;
+	font-size: 22px;
+	font-weight: 400;
+	color: #ffffff;
+	cursor: pointer;
+}
+.form-login-signup{
+	padding: 20px;
+	text-align: left;
+}
+.form-label-group {
+  position: relative;
+  margin-bottom: 1rem;
+}
+
+.form-label-group input {
+  border-radius: 2rem;
+  min-height: 50px;
+  border: 1px solid #ececec;
+  border-radius: 8px;
+}
+
+.btn-block{
+	border-radius: 8px;
+}
+
+.form-label-group>input,
+.form-label-group>label {
+  padding: var(--input-padding-y) var(--input-padding-x);
+}
+
+.form-label-group > label {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: block;
+  width: 100%;
+  margin-bottom: 0;
+  /* Override default `<label>` margin */
+  line-height: 1.5;
+  color: #495057;
+  border: 1px solid transparent;
+  border-radius: .25rem;
+  transition: all .1s ease-in-out;
+}
+
+.form-label-group input::-webkit-input-placeholder {
+  color: transparent;
+}
+
+.form-label-group input:-ms-input-placeholder {
+  color: transparent;
+}
+
+.form-label-group input::-ms-input-placeholder {
+  color: transparent;
+}
+
+.form-label-group input::-moz-placeholder {
+  color: transparent;
+}
+
+.form-label-group input::placeholder {
+  color: transparent;
+}
+
+.form-label-group input:not(:placeholder-shown) {
+  padding-top: calc(var(--input-padding-y) + var(--input-padding-y) * (2 / 3));
+  padding-bottom: calc(var(--input-padding-y) / 3);
+}
+
+.form-label-group input:not(:placeholder-shown)~label {
+  padding-top: calc(var(--input-padding-y) / 3);
+  padding-bottom: calc(var(--input-padding-y) / 3);
+  font-size: 12px;
+  color: #777;
+}
+
+.btn-google {
+  color: white;
+  background-color: #ea4335;
+}
+
+.btn-facebook {
+  color: white;
+  background-color: #3b5998;
+}
+
+.btn-color-hover{
+	border: none;
+	background: #f2709c;
+	background: -webkit-linear-gradient(to right, #ff9472, #f2709c);
+	background: linear-gradient(to right, #ff9472, #f2709c);
+}
+.btn-color-hover:hover{
+	background: #f2709c;
+	background: -webkit-linear-gradient(to right, #f2709c, #ff9472);
+	background: linear-gradient(to right, #f2709c, #ff9472);
+}
+
+.soi-hv:hover{
+	background: #f2709c;
+	background: -webkit-linear-gradient(to right, #f2709c, #ff9472);
+	background: linear-gradient(to right, #f2709c, #ff9472);
 }
