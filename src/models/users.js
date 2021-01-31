@@ -3,8 +3,8 @@ const users = [
     id: 1,
     username: 'Ndn',
     email: "ndn@gmail.com",
-    password: 'ert4'
+    password: 'ndn'
   }
 ]
 
-module.exports.users = users
+module.exports = users

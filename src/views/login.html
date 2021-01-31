@@ -69,15 +69,16 @@
             </nav>
             <div class="tab-content py-3 px-3 px-sm-0" id="nav-tabContent">
               <div class="tab-pane fade show active" id="nav-login" role="tabpanel" aria-labelledby="nav-login-tab">
-                <form class="form-login-signup">
+                <form class="form-login-signup" method="POST" action="/login">
                   <div class="form-label-group">
-                    <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required
-                      autofocus>
+                    <input type="email" id="inputEmail" class="form-control" placeholder="Email address"
+                      name="userEmail" required autofocus>
                     <label for="inputEmail">Email address</label>
                   </div>
 
                   <div class="form-label-group">
-                    <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
+                    <input type="password" id="inputPassword" name="userPassword" class="form-control"
+                      placeholder="Password" required>
                     <label for="inputPassword">Password</label>
                   </div>
                   <div class="custom-control custom-checkbox mb-3">

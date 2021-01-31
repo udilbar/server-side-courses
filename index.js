@@ -9,6 +9,8 @@ const app = express()
 app.use(express.static('src/assets'))
 app.set('views', 'src/views')
 
+app.use(express.urlencoded());
+
 app.engine('html', ejs.renderFile)
 app.set('view engine', 'html')
 
@@ -34,6 +36,18 @@ app.get('/blogs', (_, res) => {
 
 app.get('/login', (_, res) => {
   res.render('login.html')
+})
+
+app.post('/login', (req, res) => {
+  const { userEmail, userPassword } = req.body
+
+  let user = users.find(user => user.email === userEmail && user.password === userPassword)
+
+  if (user) {
+    res.send('Succesfully logged in!');
+  } else {
+    res.status(401).end()
+  }
 })
 
 app.listen(CONFIG.PORT, () => console.log(CONFIG.PORT))
