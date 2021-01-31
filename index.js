@@ -19,8 +19,12 @@ app.get('/about', (_, res) => {
   res.render('about.html')
 })
 
-app.get('/services', (_, res) => {
-  res.render('services.html')
+app.get('/contact', (_, res) => {
+  res.render('contact.html')
+})
+
+app.get('/courses', (_, res) => {
+  res.render('courses.html')
 })
 
 app.listen(CONFIG.PORT, () => console.log(CONFIG.PORT))
