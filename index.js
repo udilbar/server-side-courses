@@ -1,6 +1,8 @@
 const express = require('express')
 const ejs = require('ejs')
 const sha1 = require('sha1')
+const url = require('url')
+const querystring = require('querystring')
 const { sign, verify } = require('./src/controllers/jwt')
 
 const CONFIG = require('./src/config')
@@ -20,83 +22,70 @@ app.set('view engine', 'html')
 app.use(async (req, res, next) => {
 
 	if (req.url !== '/courses') {
-		next()
-	}
-	else {
-		try {
-      console.log(req.headers)
-			await verify(req.headers.inputToken)
+		let parsedUrl = url.parse(req.url)
+		let parsedQs = querystring.parse(parsedUrl.query)
 
+		if (parsedQs.inputToken) {
+			try {
+				await verify(parsedQs.inputToken)
+
+				next()
+			}
+			catch (error) {
+				res.status(401).send({ error: error })
+			}
+		} else {
 			next()
 		}
-		catch(error) {
-			res.status(401).send({ error: error })
-		}
+	}
+	else {
+		res.status(401).send('You need to login to access the courses')
 	}
 })
 
 app.get('/', (_, res) => {
-  res.render('index.html')
+	res.render('index.html')
 })
 
 app.get('/about', (_, res) => {
-  res.render('about.html')
+	res.render('about.html')
 })
 
 app.get('/contact', (_, res) => {
-  res.render('contact.html')
+	res.render('contact.html')
 })
 
 app.get('/courses', (_, res) => {
-  res.render('courses.html')
+	res.render('courses.html')
 })
 
 app.get('/blogs', (_, res) => {
-  res.render('blogs.html')
+	res.render('blogs.html')
 })
 
 app.get('/login', (_, res) => {
-  res.render('login.html')
+	res.render('login.html')
 })
 
 app.post('/login', (req, res) => {
-  const { userEmail, userPassword } = req.body
+	const { userEmail, userPassword } = req.body
 
-  let user = users.find(user => user.email === userEmail && user.password === sha1(userPassword))
+	let user = users.find(user => user.email === userEmail && user.password === sha1(userPassword))
 
-  // if (user) {
-  //   res.send('Succesfully logged in!');
-  // } else {
-  //   res.status(401).end()
-  // }
+	if (user) {
 
-  // if (userEmail && userPassword) {
+		const accessToken = sign({
+			id: user.id,
+			role: user.role,
+		})
 
-	// 	const login = (user) => {
-
-	// 		return (
-	// 			user.username === userEmail &&
-	// 			user.password === sha1(userPassword)
-	// 		)
-	// 	}
-
-		// const user = users.find(login)
-
-		if (user) {
-
-			const accessToken = sign({
-				id: user.id,
-				role: user.role,
-			})
-
-			res.render('login-courses.html', {
-				accessToken: accessToken
-			})
-		}
-		else {
-			res.status(401).end()
-		}
-	// }
+		res.render('login-courses.html', {
+			accessToken: accessToken
+		})
+	}
+	else {
+		res.status(401).end()
+	}
 })
 
 app.listen(CONFIG.PORT, () => console.log(CONFIG.PORT))
