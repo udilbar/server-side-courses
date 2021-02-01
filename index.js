@@ -3,10 +3,13 @@ const ejs = require('ejs')
 const sha1 = require('sha1')
 const url = require('url')
 const querystring = require('querystring')
-const { sign, verify } = require('./src/controllers/jwt')
+const { v4: uuid } = require('uuid')
+const parser = require('co-body')
 
+const { sign, verify } = require('./src/controllers/jwt')
 const CONFIG = require('./src/config')
 const users = require('./src/models/users')
+let blogs = require('./src/models/blogs')
 
 const app = express()
 
@@ -60,7 +63,37 @@ app.get('/courses', (_, res) => {
 })
 
 app.get('/blogs', (_, res) => {
-	res.render('blogs.html')
+	res.render('blogs.html', { blogs })
+})
+
+app.post('/blogs', (req, res) => {
+	const { blogTitle, blogText } = req.body
+
+	if (blogTitle, blogText) {
+		const newBlog = {
+			id: uuid(),
+			title: blogTitle,
+			text: blogText,
+			imageURL: "https://picsum.photos/540/400"
+		}
+
+		blogs.push(newBlog)
+
+		res.redirect('/blogs')
+	}
+
+	res.end()
+})
+
+app.delete("/blogs", async (req, res) => {
+
+	const { id } = await parser.json(req)
+
+	blogs = blogs.filter(post => post.id !== id)
+
+	res.status(200).json({
+		ok: true,
+	})
 })
 
 app.get('/login', (_, res) => {
